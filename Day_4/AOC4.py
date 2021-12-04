@@ -45,16 +45,26 @@ for check in checkList:
             if y:
                 mark = True
 
-        # parse through boolean board
-        if mark:
-            W[a] = True
-            print(W)
-            total = 0
+        # Vertical
+        for c in range(bingoWidth):
+            y = True
             for b in range(bingoWidth):
-                for c in range(bingoWidth):
-                    if not BBoard[a][b][c]:
-                        total += Board[a][b][c]
-            print(total * check)
+                if not BBoard[a][b][c]:
+                    y = False
+            if y:
+                mark = True
+
+        # parse through boolean board
+        if mark and not W[a]:
+            W[a] = True
+            Wlen = sum(W)
+            if Wlen == 1 or Wlen == len(W): # Nasty
+                total = 0
+                for b in range(bingoWidth):
+                    for c in range(bingoWidth):
+                        if not BBoard[a][b][c]:
+                            total += Board[a][b][c]
+                print(total * check)
 
 
 
