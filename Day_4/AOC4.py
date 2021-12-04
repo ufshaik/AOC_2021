@@ -1,4 +1,4 @@
-f = open("AOCI4Sample.txt", "r")
+f = open("AOCI4.txt", "r")
 lines = f.readlines()
 lines = [x.strip() for x in lines]
 
